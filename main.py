@@ -1,6 +1,8 @@
 import streamlit as st
 from GoogleNews import GoogleNews
 import re
+import appdirs as ad
+ad.user_cache_dir = lambda *args: "/tmp"
 import yfinance as yf
 import pandas as pd
 import matplotlib.pyplot as plt
