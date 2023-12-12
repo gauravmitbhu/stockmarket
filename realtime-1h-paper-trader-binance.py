@@ -25,7 +25,7 @@ interval = '1h'
 limit = 1000
 csv_filename = 'BTCUSDT-1h-data.csv'
 #start_trading_time = datetime(2023, 12, 9, 9, 0, 0)
-start_trading_time = datetime(2023, 12, 11, 9, 0, 0)
+start_trading_time = datetime(2023, 12, 12, 9, 0, 0)
 initial_capital = 5000
 current_time = datetime.now()
 
@@ -286,11 +286,16 @@ while True:
 
     # Check if latest data is available
     if is_latest_data_available(csv_filename):
+        print("Latest data is available in CSV file...")
         btc_data = read_data_from_csv(csv_filename, start_trading_time)
     else:
+        print("Fetching latest data from Binance...till time: ", current_time)
         btc_data = fetch_data(symbol, interval, 10, csv_filename)  # Fetching last 10 days data as an example
 
-
+    print("Start trading time: ", start_trading_time)
+    print(f"Latest data available: {btc_data.index.max()}")
+    print(f"Current time: {current_time}")
+    print("Now running full trading strategy...from start time to current time..")
     # Calculate indicators and apply trading strategy
     calculate_macd_and_rsi(btc_data)
     portfolio, trade_log, value_if_held = trading_strategy(btc_data, initial_capital, start_trading_time, current_time)
@@ -304,4 +309,5 @@ while True:
     print(f"\nValue if held from start to end: {value_if_held}")
 
     # Wait for 15 minutes before the next iteration
+    print("Waiting for 15 minutes to run strategy... till time: ", current_time + timedelta(minutes=15))
     time.sleep(15 * 60)
