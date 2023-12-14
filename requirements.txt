@@ -1,0 +1,9 @@
+streamlit
+GoogleNews
+requests
+yfinance
+matplotlib
+python-binance
+pandas
+numpy
+openpyxl
