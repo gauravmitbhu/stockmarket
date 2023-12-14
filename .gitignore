@@ -1,3 +1,6 @@
+#Ignore excel files of data
+*.xlsx
+
 # Ignore compiled Python files
 *.pyc
 
