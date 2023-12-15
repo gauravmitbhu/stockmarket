@@ -462,8 +462,8 @@ days_to_fetch=1
 # Define the Binance API endpoint for K-line data
 endpoint = 'https://api.binance.com/api/v3/klines'
 filename = 'btc_data_binance_'+interval+'-GOLDMINE.xlsx'
-rsi_upper_limit=10
-rsi_lower_limit=90
+rsi_upper_limit=1
+rsi_lower_limit=99
 
 start_timestamp = int((datetime.datetime.now() - datetime.timedelta(days=days_to_fetch)).timestamp() * 1000)
 end_timestamp = int(datetime.datetime.now().timestamp() * 1000)
